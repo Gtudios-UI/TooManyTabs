@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>b04fec95-9aec-41db-aed7-6f3b1b0d7073</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>TooManyTabs</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)GlobalUsings.Shared.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TooManyTabsItem\TooManyTabsStackItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TooManyTabsItem\TooManyTabsSingleItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TooManyTabsItem\TooManyTabsMultiItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TooManyTabsItem\TooManyTabsItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TooManyTabsView\TooManyTabsStackView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)toomanytabsview\TooManyTabsMultiView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)toomanytabsview\TooManyTabsSingleView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)toomanytabsview\TooManyTabsViewSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TooManyTabsView\TooManyTabsView.cs" />
+  </ItemGroup>
+</Project>
