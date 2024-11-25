@@ -15,7 +15,7 @@ class TooManyTabsStackView<T> : TemplateControl<OrientedStack>
         _Parent = Parent;
         TooManyTabsMultiItemProperty = new(initial);
     }
-    readonly ReadOnlyProperty<int> NegativeOne = new(-1);
+    //readonly IReadOnlyProperty<int> NegativeOne = AutoReadOnly(-1);
     IDisposable? disposable;
     protected override void Initialize(OrientedStack rootElement)
     {
@@ -27,10 +27,10 @@ class TooManyTabsStackView<T> : TemplateControl<OrientedStack>
                 new DataTemplate<TooManyTabsItem<T>, UIElement>(
                     root =>
                         new TooManyTabsViewSelector<T>(_Parent, root)
-                        .WithCustomCode(x => OrientedStack.LengthProperty.SetValue(x, new(1, GridUnitType.Star)))
+                        .WithCustomCode(x => OrientedStack.LengthProperty.SetValue(x, Star()))
                 )
             );
-            rootElement.OrientationProperty.Bind(newItem.OrientationProperty, ReadOnlyBindingModes.OneWay);
+            rootElement.OrientationBinding = OneWay(newItem.OrientationProperty);
         }
         Set(TooManyTabsMultiItemProperty.Value);
         TooManyTabsMultiItemProperty.ValueChanged += (_, x) => Set(x);

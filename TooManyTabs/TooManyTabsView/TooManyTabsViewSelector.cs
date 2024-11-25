@@ -28,7 +28,7 @@ class TooManyTabsViewSelector<T> : TemplateControl<UserControl>
             {
                 if (multiView is not null)
                 {
-                    multiView.TooManyTabsMultiItemProperty.Value = multiItem;
+                    multiView.TooManyTabsMultiItem = multiItem;
                 }
                 else
                 {
@@ -40,7 +40,7 @@ class TooManyTabsViewSelector<T> : TemplateControl<UserControl>
             {
                 if (singleView is not null)
                 {
-                    singleView.TooManyTabsSingleItemProperty.Value = singleItem;
+                    singleView.TooManyTabsSingleItem = singleItem;
                 }
                 else
                 {

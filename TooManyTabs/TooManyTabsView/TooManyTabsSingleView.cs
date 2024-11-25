@@ -1,17 +1,17 @@
-using Get.UI.Data;
 using Get.Data.Properties;
 using Get.Data.Bindings;
-using Get.Data.Bindings.Linq;
+using Get.Data.Bundles;
 namespace Gtudios.UI.TooManyTabs;
-class TooManyTabsSingleView<T> : ContentBundleControl
+[AutoProperty]
+internal partial class TooManyTabsSingleView<T> : ContentBundleControl
 {
-    public Property<TooManyTabsSingleItem<T>> TooManyTabsSingleItemProperty { get; }
+    public IProperty<TooManyTabsSingleItem<T>> TooManyTabsSingleItemProperty { get; }
     public TooManyTabsSingleView(TooManyTabsView<T> Parent, TooManyTabsSingleItem<T> initial)
     {
-        var ContentBundle = new ContentBundle<T, UIElement>();
+        var ContentBundle = new ContentBundle<T, UIElement?>(default);
         this.ContentBundle = ContentBundle;
-        ContentBundle.ContentTemplateProperty.Bind(Parent.TabContentTemplateProperty, ReadOnlyBindingModes.OneWay);
-        TooManyTabsSingleItemProperty = new(initial);
-        ContentBundle.ContentProperty.Bind(TooManyTabsSingleItemProperty.SelectPath(x => x.ItemProperty), ReadOnlyBindingModes.OneWay);
+        ContentBundle.ContentTemplateBinding = OneWay(Parent.TabContentTemplateProperty);
+        TooManyTabsSingleItemProperty = new Property<TooManyTabsSingleItem<T>>(initial);
+        ContentBundle.ContentBinding = OneWay(TooManyTabsSingleItemProperty.SelectPath(x => x.ItemProperty));
     }
 }

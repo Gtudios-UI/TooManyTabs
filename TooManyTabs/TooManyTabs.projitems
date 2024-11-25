@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)GlobalUsings.Shared.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TooManyTabsItem\TooManyTabsStackItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TooManyTabsItem\TooManyTabsSingleItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TooManyTabsItem\TooManyTabsMultiItem.cs" />

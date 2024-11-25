@@ -2,10 +2,10 @@ using Get.Data.Collections.Update;
 using Get.Data.Collections;
 using Get.Data.Properties;
 namespace Gtudios.UI.TooManyTabs;
-public class TooManyTabsStackItem<T> : TooManyTabsItem<T>
+[AutoProperty]
+public partial class TooManyTabsStackItem<T> : TooManyTabsItem<T>
 {
-    public Property<int> SelectedIndexProperty { get; } = new(0);
+    public IProperty<int> SelectedIndexProperty { get; } = Auto(0);
+    public IProperty<Orientation> OrientationProperty { get; } = Auto(Orientation.Horizontal);
     public IUpdateCollection<TooManyTabsItem<T>> Tabs { get; } = new UpdateCollection<TooManyTabsItem<T>>();
-    public Property<Orientation> OrientationProperty { get; } = new(Orientation.Horizontal);
-    public Orientation Orientation { get => OrientationProperty.Value; set => OrientationProperty.Value = value; }
 }

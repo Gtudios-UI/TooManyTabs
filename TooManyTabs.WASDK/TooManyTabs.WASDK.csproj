@@ -1,27 +1,29 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
-    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-    <RootNamespace>TooManyTabs</RootNamespace>
-    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &gt;= 8">win-x86;win-x64;win-arm64</RuntimeIdentifiers>
-    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &lt; 8">win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
-    <UseWinUI>true</UseWinUI>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+		<RootNamespace>TooManyTabs</RootNamespace>
+		<RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &gt;= 8">win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+		<RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &lt; 8">win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+		<UseWinUI>true</UseWinUI>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-      <PackageReference Include="Get.Data" Version="1.0.11" />
-      <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240311000" />
-      <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
-      <PackageReference Include="PolySharp" Version="1.14.1" PrivateAssets="all" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240829007" />
+		<PackageReference Include="PolySharp" Version="1.14.1" PrivateAssets="all" />
+		<PackageReference Include="Get.Data" Version="1.1.5" />
+		<PackageReference Include="Get.Data.SourceGenerators" Version="1.1.1" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Tabs\MotionDragContainer\Motion Drag Containers.WASDK\Motion Drag Containers.WASDK.csproj" />
-    <ProjectReference Include="..\Tabs\MotionDragContainer\MotionDrag\MotionDrag.WASDK\MotionDrag.WASDK.csproj" />
-    <ProjectReference Include="..\Tabs\MotionDragContainer\UI-Data\UI Data.WASDK\UI Data.WASDK.csproj" />
-    <ProjectReference Include="..\Tabs\MotionDragContainer\Windowing\Windowing.WASDK\Windowing.WASDK.csproj" />
-    <ProjectReference Include="..\Tabs\Tabs.WASDK\Tabs.WASDK.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Tabs\MotionDragContainer\Motion Drag Containers.WASDK\Motion Drag Containers.WASDK.csproj" />
+		<ProjectReference Include="..\Tabs\MotionDragContainer\MotionDrag\MotionDrag.WASDK\MotionDrag.WASDK.csproj" />
+		<ProjectReference Include="..\Tabs\MotionDragContainer\UI-Data\UI Data.WASDK\UI Data.WASDK.csproj" />
+		<ProjectReference Include="..\Tabs\MotionDragContainer\Windowing\Windowing.WASDK\Windowing.WASDK.csproj" />
+		<ProjectReference Include="..\Tabs\Tabs.WASDK\Tabs.WASDK.csproj" />
+	</ItemGroup>
 
-  <Import Project="..\TooManyTabs\TooManyTabs.projitems" Label="Shared" />
+	<Import Project="..\TooManyTabs\TooManyTabs.projitems" Label="Shared" />
 </Project>

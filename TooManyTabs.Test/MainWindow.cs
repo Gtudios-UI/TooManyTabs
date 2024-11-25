@@ -9,6 +9,7 @@ using Gtudios.UI.TooManyTabs;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using System.Diagnostics;
 namespace TooManyTabs.Test;
 
 class MainWindow : Window
@@ -20,33 +21,31 @@ class MainWindow : Window
         var tooManyTabsView = new TooManyTabsView<string>()
         {
             Margin = new(0, 30, 0, 0),
-            TabHeaderTemplateProperty =
-            {
-                Value = new DataTemplate<string, UIElement>(
+            TabHeaderTemplate = new DataTemplate<string, UIElement>(
                     root => new TextBlock()
                     .WithCustomCode(x =>
                         TextBlock.TextProperty.AsProperty<TextBlock, string>(x)
                         .Bind(root, ReadOnlyBindingModes.OneWay)
                     )
+                ),
+            TabContentTemplate = new DataTemplate<string, UIElement>(
+                root => new TextBlock { Margin = new(16) }
+                .WithCustomCode(x =>
+                    TextBlock.TextProperty.AsProperty<TextBlock, string>(x)
+                    .Bind(root.Select(x => $"You are currently looking at {x}"), ReadOnlyBindingModes.OneWay)
                 )
-            },
-            TabContentTemplateProperty =
-            {
-                Value = new DataTemplate<string, UIElement>(
-                    root => new TextBlock { Margin = new(16) }
-                    .WithCustomCode(x =>
-                        TextBlock.TextProperty.AsProperty<TextBlock, string>(x)
-                        .Bind(root.Select(x => $"You are currently looking at {x}"), ReadOnlyBindingModes.OneWay)
-                    )
-                )
-            }
+            )
         };
-        TooManyTabsSingleItem<string> Create(string Item)
-         => new()
-         {
-             Name = Item,
-             Item = Item
-         };
+        static TooManyTabsSingleItem<string> Create(string Item)
+        {
+            TooManyTabsSingleItem<string> item = new(Item)
+            {
+                Name = Item
+            };
+            item.NameProperty.ValueChanged += (_, _) => Debugger.Break();
+            item.ItemProperty.ValueChanged += (_, _) => Debugger.Break();
+            return item;
+        }
         TooManyTabsMultiItem<string> current = new();
         current.Tabs.Add(Create("Item 1"));
         current.Tabs.Add(Create("Item 2"));
@@ -137,7 +136,7 @@ class MainWindow : Window
                 );
             })
         );
-        tooManyTabsView.TooManyTabsItemProperty.Value = current;
+        tooManyTabsView.TooManyTabsItem = current;
         Content = tooManyTabsView;
     }
 }
