@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TooManyTabs.AppModel.Test (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "TooManyTabs.AppModel.Test (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

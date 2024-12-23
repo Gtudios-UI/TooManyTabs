@@ -2,7 +2,7 @@ using Get.UI.Data;
 using Get.Data.Properties;
 using Get.Data.Bindings;
 namespace Gtudios.UI.TooManyTabs;
-class TooManyTabsViewSelector<T> : TemplateControl<UserControl>
+partial class TooManyTabsViewSelector<T> : TemplateControl<UserControl>
 {
     TooManyTabsStackView<T>? stackView;
     TooManyTabsMultiView<T>? multiView;

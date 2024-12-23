@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)TooManyTabsItem\TooManyTabsSingleItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TooManyTabsItem\TooManyTabsMultiItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TooManyTabsItem\TooManyTabsItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)toomanytabsitem\ITooManyTabsStyle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TooManyTabsView\TooManyTabsStackView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)toomanytabsview\TooManyTabsMultiView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)toomanytabsview\TooManyTabsSingleView.cs" />

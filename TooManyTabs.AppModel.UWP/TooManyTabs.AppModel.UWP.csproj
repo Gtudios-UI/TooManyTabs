@@ -1,0 +1,65 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+	<PropertyGroup>
+		<TargetFrameworks>uap10.0.17763</TargetFrameworks>
+		<TargetPlatformBaseVersion>10.0</TargetPlatformBaseVersion>
+		<TargetPlatformRevision>22621</TargetPlatformRevision>
+		<TargetPlatformMinRevision>17763</TargetPlatformMinRevision>
+		<TargetPlatformVersion>$(TargetPlatformBaseVersion).$(TargetPlatformRevision).0</TargetPlatformVersion>
+		<TargetPlatformMinVersion>$(TargetPlatformBaseVersion).$(TargetPlatformMinRevision).0</TargetPlatformMinVersion>
+		<ExtrasUwpMetaPackageVersion>6.2.14</ExtrasUwpMetaPackageVersion>
+		<GenerateLibraryLayout>true</GenerateLibraryLayout>
+		<ExtrasEnableDefaultXamlItems>true</ExtrasEnableDefaultXamlItems>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+		<Platforms>x64;ARM64</Platforms>
+		<RuntimeIdentifiers>win10-x64;win-arm64</RuntimeIdentifiers>
+		<RootNamespace>Gtudios.UI.TooManyTabs.AppModel</RootNamespace>
+		<AssemblyName>Gtudios.UI.TooManyTabs.AppModel.UWP</AssemblyName>
+		<LangVersion>12</LangVersion>
+		<Nullable>enable</Nullable>
+		<Version>1.0.9</Version>
+		<PackageOutputPath>D:\Programming\VS\.LocalNugetPackages</PackageOutputPath>
+		<WebView2NeverCopyLoaderDllToOutputDirectory>true</WebView2NeverCopyLoaderDllToOutputDirectory>
+	</PropertyGroup>
+
+	<!--
+		Bundle the .rd.xml directives as embedded resource so they're picked up automatically.
+		See: https://devblogs.microsoft.com/dotnet/net-native-deep-dive-making-your-library-great/.
+	  -->
+	<ItemGroup>
+		<None Remove="Properties\TooManyTabs.AppModel.UWP.rd.xml" />
+		<EmbeddedResource Include="Properties\TooManyTabs.AppModel.UWP.rd.xml" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2792.45" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.UI.Xaml" Version="2.8.6" />
+		<PackageReference Include="PolySharp" Version="1.14.1" PrivateAssets="all" />
+		<PackageReference Include="Get.Data" Version="1.1.6" />
+		<PackageReference Include="Get.Data.SourceGenerators" Version="1.1.7" />
+		<ProjectReference Include="..\Tabs\MotionDragContainer\Motion Drag Containers.UWP\Motion Drag Containers.UWP.csproj">
+			<Project>{62ec7d54-e65a-4fe4-aaf2-1b0b642e52b5}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Tabs\MotionDragContainer\MotionDrag\MotionDrag.UWP\MotionDrag.UWP.csproj">
+			<Project>{bafd130d-1ce6-487d-bcb6-9c4b15081a80}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Tabs\MotionDragContainer\UI-Data\Get.Data\Get.Data\Get.Data.csproj">
+			<Project>{10e7ea97-a8ed-4c94-8e16-b8ab1bbac7af}</Project>
+			<Name>Get.Data</Name>
+		</ProjectReference>
+		<ProjectReference Include="..\Tabs\MotionDragContainer\UI-Data\UI Data.UWP\UI Data.UWP.csproj">
+			<Project>{c8527070-b494-4f12-9846-ea196bfa9afc}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Tabs\MotionDragContainer\Windowing\Windowing.UWP\Windowing.UWP.csproj">
+			<Project>{e10cc90c-3207-4a75-84dc-a180b4da9618}</Project>
+			<Name>Windowing.UWP</Name>
+		</ProjectReference>
+		<ProjectReference Include="..\Tabs\Tabs.UWP\Tabs.UWP.csproj">
+			<Project>{2b18d683-0c81-4454-ba04-ca46a5ef800b}</Project>
+			<Name>Tabs.UWP</Name>
+		</ProjectReference>
+		<ProjectReference Include="..\TooManyTabs.UWP\TooManyTabs.UWP.csproj">
+		</ProjectReference>
+	</ItemGroup>
+	<Import Project="..\TooManyTabs.AppModel\TooManyTabs.AppModel.projitems" Label="Shared" />
+</Project>

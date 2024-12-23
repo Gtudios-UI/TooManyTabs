@@ -6,7 +6,7 @@ using Get.Data.Helpers;
 using Get.UI.Controls.Panels;
 using Get.Data.Collections.Conversion;
 namespace Gtudios.UI.TooManyTabs;
-class TooManyTabsStackView<T> : TemplateControl<OrientedStack>
+partial class TooManyTabsStackView<T> : TemplateControl<OrientedStack>
 {
     public Property<TooManyTabsStackItem<T>> TooManyTabsMultiItemProperty { get; }
     TooManyTabsView<T> _Parent;

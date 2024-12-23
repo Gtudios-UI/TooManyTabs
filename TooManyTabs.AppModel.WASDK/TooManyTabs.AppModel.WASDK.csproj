@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+		<RootNamespace>Gtudios.UI.TooManyTabs.AppModel</RootNamespace>
+		<AssemblyName>Gtudios.UI.TooManyTabs.AppModel.WASDK</AssemblyName>
+		<RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &gt;= 8">win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+		<RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &lt; 8">win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+		<UseWinUI>true</UseWinUI>
+		<Nullable>enable</Nullable>
+		<Version>1.0.0</Version>
+		<PackageOutputPath>D:\Programming\VS\.LocalNugetPackages</PackageOutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240829007" />
+		<PackageReference Include="PolySharp" Version="1.14.1" PrivateAssets="all" />
+		<PackageReference Include="Get.Data" Version="1.1.6" />
+		<PackageReference Include="Get.Data.SourceGenerators" Version="1.1.7" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Tabs\MotionDragContainer\Motion Drag Containers.WASDK\Motion Drag Containers.WASDK.csproj" />
+		<ProjectReference Include="..\Tabs\MotionDragContainer\MotionDrag\MotionDrag.WASDK\MotionDrag.WASDK.csproj" />
+		<ProjectReference Include="..\Tabs\MotionDragContainer\UI-Data\UI Data.WASDK\UI Data.WASDK.csproj" />
+		<ProjectReference Include="..\Tabs\MotionDragContainer\Windowing\Windowing.WASDK\Windowing.WASDK.csproj" />
+		<ProjectReference Include="..\Tabs\Tabs.WASDK\Tabs.WASDK.csproj" />
+		<ProjectReference Include="..\TooManyTabs.WASDK\TooManyTabs.WASDK.csproj" />
+	</ItemGroup>
+
+	<Import Project="..\TooManyTabs.AppModel\TooManyTabs.AppModel.projitems" Label="Shared" />
+</Project>
